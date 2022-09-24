@@ -13,6 +13,7 @@ export class UserService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const data: Prisma.UserCreateInput = {
       ...createUserDto,
+
       password: await bcrypt.hash(createUserDto.password, 10),
     };
 

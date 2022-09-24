@@ -11,6 +11,12 @@ import jwt_decode from "jwt-decode";
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
+
+  @Get('me')
+  findMe(@Request() req) {
+
+    return this.userService.findOne(req.user.id);
+  }
   @Post()
   @IsPublic()
   create(@Body() createUserDto: CreateUserDto) {
@@ -32,7 +38,7 @@ export class UserController {
 
     const accessToken = req.headers.authorization.split(" ")[1]
     let currentUser = jwt_decode(accessToken)
-    console.log(currentUser)
+
     let id = currentUser["sub"]
     return this.userService.update(id, updateUserDto);
   }
@@ -50,6 +56,7 @@ export class UserController {
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
   }
+
 
 
 

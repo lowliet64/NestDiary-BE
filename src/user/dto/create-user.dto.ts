@@ -19,8 +19,6 @@ export class CreateUserDto extends User {
     })
     password: string;
 
-    @IsString()
-    bio: string
 
     @IsString()
     name: string;
