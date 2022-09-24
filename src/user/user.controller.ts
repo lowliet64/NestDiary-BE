@@ -17,13 +17,12 @@ export class UserController {
 
     return this.userService.findOne(req.user.id);
   }
+
   @Post()
   @IsPublic()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-
-
 
   @Delete(':id')
   @IsPublic()
@@ -43,10 +42,8 @@ export class UserController {
     return this.userService.update(id, updateUserDto);
   }
 
-
   @Get()
   findAll(@Request() req) {
-
     return this.userService.findAll();
   }
 
