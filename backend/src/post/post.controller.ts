@@ -16,10 +16,7 @@ export class PostController {
 
     const accessToken = req.headers.authorization.split(" ")[1]
     let currentUser = jwtDecode(accessToken)
-
     let authorId = currentUser["sub"]
-
-
     return this.postService.create({ title, body, authorId });
   }
 
@@ -30,8 +27,7 @@ export class PostController {
   }
 
   @Get('me')
-  findMines(@Request() req) {
-    console.log('minhas requisições')
+  findMyPosts(@Request() req) {
     return this.postService.findManyPerAuthorId(req.user.id);
   }
 
