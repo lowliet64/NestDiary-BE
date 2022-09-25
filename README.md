@@ -28,6 +28,14 @@
   ~~~
     npm install
   ~~~~
+  
+  * Crie um arquivo .env com os seguintes atributos
+  ~~~
+    JWT_SECRET="secret super secreta"
+    # Database
+    DATABASE_URL="postgresql://USER:PASS@HOST:POST/myDB?schema=public"
+  ~~~~
+
 
  * execute as migrações
    
